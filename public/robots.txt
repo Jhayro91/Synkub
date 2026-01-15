@@ -1,4 +1,19 @@
+# Robots.txt for Synkub
+# https://synkub.onrender.com
+
 User-agent: *
 Allow: /
 
-Sitemap: https://synkub.com/sitemap.xml
+# Sitemap location
+Sitemap: https://synkub.onrender.com/sitemap.xml
+
+# Block build/development files
+Disallow: /_next/static/development/
+Disallow: /api/
+
+# Allow search engines to crawl everything else
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

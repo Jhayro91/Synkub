@@ -107,13 +107,34 @@ Para modificar el contenido:
 ### SEO y Metadatos
 
 Los metadatos se configuran en `app/layout.tsx`:
-- Título y descripción
-- Open Graph para redes sociales
-- Datos estructurados JSON-LD
+- Título y descripción optimizados para SEO
+- Open Graph para redes sociales (Facebook, LinkedIn)
+- Twitter Cards para compartir en Twitter
+- Datos estructurados JSON-LD (Organization, WebSite, Service)
+- Viewport y theme-color configurados
+- Keywords relevantes para posicionamiento
 
 ## 🚀 Despliegue
 
-### Vercel (Recomendado)
+### Render.com (Configurado)
+
+El proyecto incluye `render.yaml` para despliegue automático:
+
+1. Ve a [render.com](https://render.com) y crea una cuenta
+2. Conecta tu cuenta de GitHub
+3. Haz clic en **New > Web Service**
+4. Selecciona el repositorio `Synkub`
+5. Render detectará automáticamente la configuración del `render.yaml`
+6. Haz clic en **Create Web Service**
+
+**Configuración incluida:**
+- Build Command: `npm install && npm run build`
+- Start Command: `npm start`
+- Runtime: Node.js
+- Plan: Free
+- Auto-deploy: Habilitado
+
+### Vercel (Alternativa)
 
 1. Conecta tu repositorio de GitHub a Vercel
 2. Configura el build command: `npm run build`
@@ -127,10 +148,25 @@ Compatible con:
 - Heroku
 - Cualquier servidor que soporte Next.js
 
+## 🔍 SEO Optimizado
+
+Este proyecto incluye:
+- ✅ Meta tags completos (title, description, keywords)
+- ✅ Open Graph para Facebook/LinkedIn
+- ✅ Twitter Cards
+- ✅ Datos estructurados Schema.org (JSON-LD)
+- ✅ Sitemap.xml dinámico
+- ✅ Robots.txt optimizado
+- ✅ Manifest.json para PWA
+- ✅ Headers de seguridad
+- ✅ Compresión habilitada
+- ✅ Imágenes optimizadas
+
 ## 📞 Contacto
 
 - **Email**: contacto@synkub.com
-- **Sitio Web**: [synkub.com](https://synkub.com)
+- **Sitio Web**: [synkub.onrender.com](https://synkub.onrender.com)
+- **GitHub**: [github.com/Jhayro91/Synkub](https://github.com/Jhayro91/Synkub)
 - **Ubicación**: Lima, Perú
 
 ## 📄 Licencia
