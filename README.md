@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plataforma Web Synkub
 
-## Getting Started
+Sitio web profesional para Synkub, una empresa especializada en desarrollo de software a medida. Esta plataforma permite a los clientes potenciales contactar para solicitar cotizaciones, agendar reuniones y conocer nuestros servicios.
 
-First, run the development server:
+## 🚀 Características
 
+- **Diseño Moderno y Responsivo**: Interfaz profesional con diseño adaptativo para todos los dispositivos
+- **Optimización SEO**: Metadatos completos, Open Graph, Twitter Cards y datos estructurados
+- **Formulario de Contacto**: Sistema de contacto integrado con selección de presupuesto y tipo de proyecto
+- **Secciones Completas**:
+  - Hero con animaciones y estadísticas
+  - Servicios detallados (Web, Móvil, Backend, Cloud, Empresarial, Consultoría)
+  - Tecnologías utilizadas
+  - Proceso de desarrollo (4 etapas)
+  - Por qué elegir Synkub
+  - Formulario de contacto
+  - Footer con enlaces sociales
+- **Sitemap y Robots.txt**: Para mejor indexación en motores de búsqueda
+- **Rendimiento Optimizado**: Next.js con Turbopack para desarrollo rápido
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Next.js 16** - Framework de React para aplicaciones web modernas
+- **TypeScript** - Tipado estático para mayor robustez
+- **Tailwind CSS** - Framework CSS utility-first para estilos responsivos
+- **@heroicons/react** - Iconos profesionales para la interfaz
+- **ESLint** - Linting para mantener la calidad del código
+
+## 📦 Instalación y Uso
+
+### Prerrequisitos
+
+- Node.js 18 o superior
+- npm o yarn
+
+### Instalación
+
+1. Clona el repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Jhayro91/Synkub.git
+cd Synkub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Ejecuta el servidor de desarrollo:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-## Learn More
+### Construcción para Producción
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Estructura del Proyecto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+plataforma-synkub/
+├── app/
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx          # Layout principal con metadatos SEO
+│   ├── page.tsx            # Página principal con todas las secciones
+│   └── sitemap.ts          # Generación automática de sitemap
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── robots.txt
+│   ├── vercel.svg
+│   └── window.svg
+├── .github/
+│   └── copilot-instructions.md
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+├── postcss.config.mjs
+├── tailwind.config.ts
+└── README.md
+```
 
-## Deploy on Vercel
+## 🎨 Personalización
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Colores y Branding
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los colores principales se definen en Tailwind CSS:
+- Azul primario: `blue-600` a `indigo-700`
+- Gradientes: Azul a índigo a púrpura
+- Fondo: Blanco con acentos en slate
+
+### Contenido
+
+Para modificar el contenido:
+- **Hero**: Editar la sección `inicio` en `app/page.tsx`
+- **Servicios**: Modificar el array de servicios en la sección correspondiente
+- **Tecnologías**: Actualizar el array de tecnologías
+- **Contacto**: Cambiar emails y información de contacto
+
+### SEO y Metadatos
+
+Los metadatos se configuran en `app/layout.tsx`:
+- Título y descripción
+- Open Graph para redes sociales
+- Datos estructurados JSON-LD
+
+## 🚀 Despliegue
+
+### Vercel (Recomendado)
+
+1. Conecta tu repositorio de GitHub a Vercel
+2. Configura el build command: `npm run build`
+3. El sitio se desplegará automáticamente
+
+### Otras Plataformas
+
+Compatible con:
+- Netlify
+- Railway
+- Heroku
+- Cualquier servidor que soporte Next.js
+
+## 📞 Contacto
+
+- **Email**: contacto@synkub.com
+- **Sitio Web**: [synkub.com](https://synkub.com)
+- **Ubicación**: Lima, Perú
+
+## 📄 Licencia
+
+Este proyecto es privado y propiedad de Synkub.
+
+## 🤝 Contribuciones
+
+Para contribuir:
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+---
+
+Desarrollado con ❤️ por [Jhayro Chavez](https://github.com/Jhayro91)
