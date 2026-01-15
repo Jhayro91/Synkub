@@ -120,7 +120,7 @@ export default function RootLayout({
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "email": "contacto@synkub.com",
+          "email": "jhayro.chavez@synkub.com",
           "contactType": "customer service",
           "availableLanguage": ["Spanish", "English"]
         },

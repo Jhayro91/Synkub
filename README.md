@@ -182,7 +182,7 @@ Este proyecto incluye:
 
 ## 📞 Contacto
 
-- **Email**: contacto@synkub.com
+- **Email**: jhayro.chavez@synkub.com
 - **Sitio Web**: [synkub.onrender.com](https://synkub.onrender.com)
 - **GitHub**: [github.com/Jhayro91/Synkub](https://github.com/Jhayro91/Synkub)
 - **Ubicación**: Lima, Perú

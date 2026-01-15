@@ -454,7 +454,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">Email</div>
-                    <div className="text-gray-900 font-medium">contacto@synkub.com</div>
+                    <div className="text-gray-900 font-medium">jhayro.chavez@synkub.com</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -489,7 +489,7 @@ export default function Home() {
                 {formStatus === 'error' && (
                   <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
                     <ExclamationCircleIcon className="w-6 h-6 text-red-500 flex-shrink-0" />
-                    <p className="text-red-700 text-sm">Hubo un error al enviar. Por favor intenta de nuevo o escríbenos directamente a contacto@synkub.com</p>
+                    <p className="text-red-700 text-sm">Hubo un error al enviar. Por favor intenta de nuevo o escríbenos directamente a jhayro.chavez@synkub.com</p>
                   </div>
                 )}
                 <div className="grid md:grid-cols-2 gap-6">
@@ -641,7 +641,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-6">Contacto</h4>
               <ul className="space-y-3 text-gray-400">
-                <li>contacto@synkub.com</li>
+                <li>jhayro.chavez@synkub.com</li>
                 <li>Lima, Perú</li>
               </ul>
               <div className="flex space-x-4 mt-6">
