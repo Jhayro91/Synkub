@@ -1,10 +1,50 @@
 'use client';
 
-import { CodeBracketIcon, DevicePhoneMobileIcon, CogIcon, RocketLaunchIcon, ShieldCheckIcon, ClockIcon, ChatBubbleLeftRightIcon, CubeTransparentIcon, ServerStackIcon, CloudArrowUpIcon, ChartBarIcon, LightBulbIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { CodeBracketIcon, DevicePhoneMobileIcon, CogIcon, RocketLaunchIcon, ShieldCheckIcon, ClockIcon, ChatBubbleLeftRightIcon, CubeTransparentIcon, ServerStackIcon, CloudArrowUpIcon, ChartBarIcon, LightBulbIcon, CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
+import { useState, FormEvent } from 'react';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    empresa: '',
+    tipoProyecto: '',
+    presupuesto: '',
+    mensaje: ''
+  });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('loading');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({
+          nombre: '',
+          email: '',
+          empresa: '',
+          tipoProyecto: '',
+          presupuesto: '',
+          mensaje: ''
+        });
+      } else {
+        setFormStatus('error');
+      }
+    } catch {
+      setFormStatus('error');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -432,13 +472,35 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-10">
-              <form className="space-y-6">
+              {formStatus === 'success' ? (
+                <div className="text-center py-12">
+                  <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">¡Mensaje Enviado!</h3>
+                  <p className="text-gray-600 mb-6">Gracias por contactarnos. Te responderemos en menos de 24 horas.</p>
+                  <button
+                    onClick={() => setFormStatus('idle')}
+                    className="text-blue-600 font-medium hover:text-blue-700"
+                  >
+                    Enviar otro mensaje
+                  </button>
+                </div>
+              ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {formStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+                    <ExclamationCircleIcon className="w-6 h-6 text-red-500 flex-shrink-0" />
+                    <p className="text-red-700 text-sm">Hubo un error al enviar. Por favor intenta de nuevo o escríbenos directamente a contacto@synkub.com</p>
+                  </div>
+                )}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
                     <input
                       type="text"
+                      name="nombre"
                       required
+                      value={formData.nombre}
+                      onChange={(e) => setFormData({...formData, nombre: e.target.value})}
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       placeholder="Tu nombre"
                     />
@@ -447,7 +509,10 @@ export default function Home() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       placeholder="tu@email.com"
                     />
@@ -457,52 +522,80 @@ export default function Home() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Empresa (opcional)</label>
                   <input
                     type="text"
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={(e) => setFormData({...formData, empresa: e.target.value})}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     placeholder="Nombre de tu empresa"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Tipo de Proyecto</label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700">
+                  <select 
+                    name="tipoProyecto"
+                    value={formData.tipoProyecto}
+                    onChange={(e) => setFormData({...formData, tipoProyecto: e.target.value})}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700"
+                  >
                     <option value="">Selecciona una opción</option>
-                    <option value="web">Desarrollo Web</option>
-                    <option value="mobile">Aplicación Móvil</option>
-                    <option value="backend">Backend & APIs</option>
-                    <option value="enterprise">Sistema Empresarial</option>
-                    <option value="consulting">Consultoría</option>
-                    <option value="other">Otro</option>
+                    <option value="Desarrollo Web">Desarrollo Web</option>
+                    <option value="Aplicación Móvil">Aplicación Móvil</option>
+                    <option value="Backend & APIs">Backend & APIs</option>
+                    <option value="Sistema Empresarial">Sistema Empresarial</option>
+                    <option value="Consultoría">Consultoría</option>
+                    <option value="Otro">Otro</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Presupuesto Estimado</label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700">
+                  <select 
+                    name="presupuesto"
+                    value={formData.presupuesto}
+                    onChange={(e) => setFormData({...formData, presupuesto: e.target.value})}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700"
+                  >
                     <option value="">Selecciona un rango</option>
-                    <option value="small">$1,000 - $5,000</option>
-                    <option value="medium">$5,000 - $15,000</option>
-                    <option value="large">$15,000 - $50,000</option>
-                    <option value="enterprise">$50,000+</option>
-                    <option value="unknown">Por definir</option>
+                    <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+                    <option value="$5,000 - $15,000">$5,000 - $15,000</option>
+                    <option value="$15,000 - $50,000">$15,000 - $50,000</option>
+                    <option value="$50,000+">$50,000+</option>
+                    <option value="Por definir">Por definir</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
                   <textarea
+                    name="mensaje"
                     rows={4}
                     required
+                    value={formData.mensaje}
+                    onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     placeholder="Cuéntanos sobre tu proyecto, objetivos y cualquier detalle relevante..."
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+                  disabled={formStatus === 'loading'}
+                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Enviar Solicitud
+                  {formStatus === 'loading' ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Enviando...
+                    </>
+                  ) : (
+                    'Enviar Solicitud'
+                  )}
                 </button>
                 <p className="text-xs text-gray-500 text-center">
                   Al enviar este formulario, aceptas nuestra política de privacidad.
                 </p>
               </form>
+              )}
             </div>
           </div>
         </div>

@@ -65,6 +65,9 @@ npm start
 ```
 plataforma-synkub/
 ├── app/
+│   ├── api/
+│   │   └── contact/
+│   │       └── route.ts    # API para envío de cotizaciones por email
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx          # Layout principal con metadatos SEO
@@ -75,17 +78,32 @@ plataforma-synkub/
 │   ├── globe.svg
 │   ├── next.svg
 │   ├── robots.txt
+│   ├── manifest.json
 │   ├── vercel.svg
 │   └── window.svg
 ├── .github/
 │   └── copilot-instructions.md
+├── .env.example            # Variables de entorno de ejemplo
+├── render.yaml             # Configuración de Render.com
 ├── package.json
 ├── tsconfig.json
 ├── next.config.ts
 ├── postcss.config.mjs
-├── tailwind.config.ts
 └── README.md
 ```
+
+## 📧 Configuración de Emails
+
+El formulario de contacto envía cotizaciones a tu correo usando **Resend**.
+
+### Configurar envío de emails:
+
+1. Crea una cuenta en [resend.com](https://resend.com) (gratis)
+2. Obtén tu API Key en [resend.com/api-keys](https://resend.com/api-keys)
+3. En Render.com, ve a tu servicio > **Environment**
+4. Agrega la variable: `RESEND_API_KEY=re_tu_api_key`
+
+**Nota**: Sin configurar Resend, el formulario igual funciona pero los datos se registran en los logs del servidor.
 
 ## 🎨 Personalización
 
